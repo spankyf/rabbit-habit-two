@@ -1,0 +1,31 @@
+{
+  "name": "rabbit-habit-two",
+  "version": "1.0.0",
+  "description": "Habit tracker",
+  "main": "server.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spankyf/rabbit-habit-two.git"
+  },
+  "author": "Dean Flanagan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spankyf/rabbit-habit-two/issues"
+  },
+  "homepage": "https://github.com/spankyf/rabbit-habit-two#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "node-fetch": "^2.6.0",
+    "pg": "^8.3.0",
+    "sequelize": "^6.3.3"
+  }
+}
