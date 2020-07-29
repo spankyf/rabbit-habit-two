@@ -4,6 +4,9 @@ const db = require("../models");
 exports.getAllSleeps = catchAsync(async (req, res) => {
   const sleeps = await db.Sleep.findAll({ order: [["date", "ASC"]] });
 
+  sleeps.forEach((element) => {
+    console.log(element.dataValues.waketime - element.dataValues.bedtime);
+  });
   res.status(201).json({
     status: "success",
     len: sleeps.length,

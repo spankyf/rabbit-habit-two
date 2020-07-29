@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const db = require("./models");
 const fs = require("fs");
 const sleepRouter = require("./routes/sleepRoutes");
+const viewRouter = require("./routes/viewRoutes");
 const catchAsync = require("./utils/catchAsync");
 
 const seedData = catchAsync(async (req, res) => {
@@ -26,6 +27,7 @@ app
   .use(express.static(path.join(__dirname, "public")))
   .use(morgan("dev"))
   .use("/sleep", sleepRouter)
+  .use("/", viewRouter)
   .set("views", path.join(__dirname, "views"))
   .set("view engine", "pug");
 
