@@ -3,15 +3,21 @@ const db = require("../models");
 
 exports.getAllSleeps = catchAsync(async (req, res) => {
   const sleeps = await db.Sleep.findAll({ order: [["date", "ASC"]] });
-
+  var sum = 0;
   sleeps.forEach((element) => {
-    console.log(element.dataValues.waketime - element.dataValues.bedtime);
+    sum += element.dataValues.waketime - element.dataValues.sleeptime;
   });
-  res.status(201).json({
-    status: "success",
+
+  res.status(200).render("pages/sleep", {
+    title: "Sleep Report",
     len: sleeps.length,
-    data: sleeps,
+    avgSleep: sum / sleeps.length / 3600000,
   });
+  // res.status(201).json({
+  //   status: "success",
+  //   len: sleeps.length,
+  //   data: sleeps,
+  // });
 });
 
 exports.getSleep = catchAsync(async (req, res) => {
@@ -19,10 +25,16 @@ exports.getSleep = catchAsync(async (req, res) => {
   res.status(200).json({
     status: "success",
     data: newDay,
+    db: db,
   });
 });
 
 exports.addSleep = catchAsync(async (req, res) => {
+  // console.log(req.body.date);
+  console.log(req.body);
+  console.log(res.body);
+  console.log(req.body.date);
+  // console.log(res.body);
   const newSleep = await db.Sleep.create(req.body);
   res.status(201).json({
     status: "success",

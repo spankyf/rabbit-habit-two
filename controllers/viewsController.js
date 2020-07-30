@@ -1,12 +1,17 @@
 const db = require("../models/index");
 const catchAsync = require("../utils/catchAsync");
-const spawn = require("child_process").spawn;
 
 exports.getOverview = catchAsync(async (req, res) => {
   // https://stackoverflow.com/questions/48707021/node-how-to-run-python-script-when-clicking-button-using-pug-and-express-node-we
+  const sleeps = await db.Sleep.findAll({ order: [["date", "ASC"]] });
+  var sum = 0;
+  sleeps.forEach((element) => {
+    sum += element.dataValues.waketime - element.dataValues.sleeptime;
+  });
 
   res.status(200).render("pages/overview", {
     title: "All Habits",
     something: "Welecom",
+    avgSleep: sum / sleeps.length / 3600000,
   });
 });

@@ -13,3 +13,11 @@ html(lang="en")
     p Your average sleep microseconds are
     p= avgSleep
     a(href='/sleep') Details
+    h1 Form
+    form(action="/sleep", method="post")
+        div
+            label(for='date') Date:
+            input(type='date' name="date" value= "date")
+        div 
+            button(type='submit' value='Create Sleep')
+
