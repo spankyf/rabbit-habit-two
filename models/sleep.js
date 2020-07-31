@@ -54,7 +54,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       duration: {
-        type: DataTypes.VIRTUAL,
+        type: DataTypes.REAL,
         get() {
           const lostTime = this.pee * 10 + this.interruptions * 20;
           const duration = this.waketime - this.sleeptime;

@@ -9,17 +9,25 @@ const bodyParser = require("body-parser");
 
 const sleepRouter = require("./routes/sleepRoutes");
 const viewRouter = require("./routes/viewRoutes");
+const exerciseRouter = require("./routes/exerciseRoutes");
+
 const catchAsync = require("./utils/catchAsync");
 
 app.locals.moment = require("moment");
 
 const seedData = catchAsync(async (req, res) => {
-  const seed = await db.Sleep.bulkCreate(
+  const seedSleep = await db.Sleep.bulkCreate(
     JSON.parse(
       fs.readFileSync(path.join(__dirname, "utils", "data", "sleep.json"))
     )
   );
   console.log("Sleep data seeded");
+  const seedExercise = await db.Exercise.bulkCreate(
+    JSON.parse(
+      fs.readFileSync(path.join(__dirname, "utils", "data", "exercise.json"))
+    )
+  );
+  console.log("Exercise data seeded");
 });
 
 db.sequelize.sync({ force: true }).then(() => {
@@ -34,6 +42,7 @@ app
   .use(morgan("dev"))
   // .use(bodyParser.json())
   .use("/sleep", sleepRouter)
+  .use("/exercise", exerciseRouter)
   .use("/", viewRouter)
   .use(express.json({ limit: "10kb" }))
   .set("views", path.join(__dirname, "views"))

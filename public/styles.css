@@ -1,0 +1,35 @@
+header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 8px 10%;
+  border: solid black 2px;
+}
+
+.logo {
+  cursor: pointer;
+  margin-right: auto;
+  width: 140px;
+  height: auto;
+}
+
+.link__text {
+  color: blue;
+}
+
+.nav__links {
+  list-style-type: none;
+}
+
+.nav__links li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+.nav__links li a {
+  transition: all 0.3s ease 0s;
+}
+
+.nav__links li a:hover {
+  color: #0088a9;
+}
