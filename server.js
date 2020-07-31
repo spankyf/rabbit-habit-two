@@ -11,6 +11,8 @@ const sleepRouter = require("./routes/sleepRoutes");
 const viewRouter = require("./routes/viewRoutes");
 const catchAsync = require("./utils/catchAsync");
 
+app.locals.moment = require("moment");
+
 const seedData = catchAsync(async (req, res) => {
   const seed = await db.Sleep.bulkCreate(
     JSON.parse(
@@ -26,17 +28,16 @@ db.sequelize.sync({ force: true }).then(() => {
 });
 
 app
+  .use(bodyParser.urlencoded({ extended: false }))
+  .use(bodyParser.json())
   .use(express.static(path.join(__dirname, "public")))
-  // .use(morgan("dev"))
+  .use(morgan("dev"))
   // .use(bodyParser.json())
   .use("/sleep", sleepRouter)
   .use("/", viewRouter)
   .use(express.json({ limit: "10kb" }))
   .set("views", path.join(__dirname, "views"))
   .set("view engine", "pug");
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 app.listen(port, () =>
   console.log(`Example app listening at http://localhost:${port}`)

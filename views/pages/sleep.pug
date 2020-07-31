@@ -12,12 +12,34 @@ html(lang="en")
     p= data
     p Your average sleep microseconds are
     p= avgSleep
-    a(href='/sleep') Details
+    a(href='/') Go back home
     h1 Form
     form(action="/sleep", method="post")
         div
             label(for='date') Date:
-            input(type='date' name="date" value= "date")
+            input(type='date' name="date" value= moment().format("YYYY-MM-DD"))
+        div
+            label(for='rating') Sleep rating from 5:
+            input(type='number' name="rating_from_five" value= "rating")
+        div
+            label(for='dreams') Dreams from 3 Rating:
+            input(type='number' name="dreams_from_three" value= "dreams")
+        div
+            label(for='interruptions') Interruptions
+            input(type='number' name="interruptions" value= "interruptions")
+        div
+            label(for='pee') Pee
+            input(type='number' name="pee" value= "pee")
+        div
+            label(for='bedtime') Bedtime:
+            input(type='datetime-local' name="bedtime" value= "bedtime")
+        div
+            label(for='sleeptime') Sleeptime:
+            input(type='datetime-local' name="sleeptime" value= "sleeptime")
+        div
+            label(for='waketime') Waketime:
+            input(type='datetime-local' name="waketime" value= "waketime")
+
         div 
-            button(type='submit' value='Create Sleep')
+            button(type='submit' value='New Rating!') Click me to submit your Rating!
 

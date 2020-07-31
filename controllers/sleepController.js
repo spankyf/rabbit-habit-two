@@ -13,11 +13,6 @@ exports.getAllSleeps = catchAsync(async (req, res) => {
     len: sleeps.length,
     avgSleep: sum / sleeps.length / 3600000,
   });
-  // res.status(201).json({
-  //   status: "success",
-  //   len: sleeps.length,
-  //   data: sleeps,
-  // });
 });
 
 exports.getSleep = catchAsync(async (req, res) => {
@@ -30,13 +25,8 @@ exports.getSleep = catchAsync(async (req, res) => {
 });
 
 exports.addSleep = catchAsync(async (req, res) => {
-  // console.log(req.body.date);
-  console.log(req.body);
-  console.log(res.body);
-  console.log(req.body.date);
-  // console.log(res.body);
   const newSleep = await db.Sleep.create(req.body);
-  res.status(201).json({
+  res.status(201).render("pages/sleep", {
     status: "success",
     data: newSleep,
   });
