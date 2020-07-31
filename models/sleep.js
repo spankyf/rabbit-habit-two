@@ -16,6 +16,8 @@ module.exports = (sequelize, DataTypes) => {
       date: {
         type: DataTypes.DATEONLY,
         allowNull: false,
+        unique: true,
+        primaryKey: true,
       },
       bedtime: {
         type: DataTypes.DATE,

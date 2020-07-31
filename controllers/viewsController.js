@@ -11,9 +11,7 @@ exports.getOverview = catchAsync(async (req, res) => {
     sum += element.dataValues.waketime - element.dataValues.sleeptime;
     console.log(element.dataValues.date);
     if (element.dataValues.date === todayDate) {
-      console.log("             ***********************");
-      console.log(element.dataValues.date, todayDate);
-      console.log("             ***********************");
+      todaySleep = true;
     }
   });
 
@@ -21,5 +19,6 @@ exports.getOverview = catchAsync(async (req, res) => {
     title: "All Habits",
     something: "Welecom",
     avgSleep: sum / sleeps.length / 3600000,
+    loggedToday: todaySleep,
   });
 });
