@@ -55,10 +55,13 @@ module.exports = (sequelize, DataTypes) => {
       },
       duration: {
         type: DataTypes.REAL,
-        get() {
+        set() {
           const lostTime = this.pee * 10 + this.interruptions * 20;
           const duration = this.waketime - this.sleeptime;
-          return (duration - lostTime) / 60000;
+          console.log(duration, lostTime);
+          console.log(typeof duration);
+          console.log(typeof lostTime);
+          this.setDataValue("duration", (duration - lostTime) / 60000);
         },
       },
 
