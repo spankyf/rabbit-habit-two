@@ -1,4 +1,14 @@
 [
-  { "modelName": "Sleep", "targetColumn": "duration", "number": "7.5" },
-  { "modelName": "Exercise", "targetColumn": "exercise", "number": "15" }
+  {
+    "modelName": "Sleep",
+    "targetColumn": "duration",
+    "number": "7.5",
+    "goalMetric": "avg"
+  },
+  {
+    "modelName": "Exercise",
+    "targetColumn": "exercise",
+    "number": "15",
+    "goalMetric": "avg"
+  }
 ]
