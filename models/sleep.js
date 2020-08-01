@@ -54,15 +54,16 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       duration: {
-        type: DataTypes.REAL,
+        type: DataTypes.INTEGER,
         set() {
-          const lostTime = this.pee * 10 + this.interruptions * 20;
-          const duration = this.waketime - this.sleeptime;
-          console.log(duration, lostTime);
-          console.log(typeof duration);
-          console.log(typeof lostTime);
-          this.setDataValue("duration", (duration - lostTime) / 60000);
+          this.setDataValue("duration", this.pee);
         },
+        // const lostTime =
+        //   this.dataValue.pee * 10 + this.dataValue.interruptions * 20;
+        // const duration = this.dataValue.waketime - this.dataValue.sleeptime;
+
+        //   this.setDataValue("duration", this.dataValue.date); //(duration - lostTime) / 60000;
+        // },
       },
 
       interruptions: {
