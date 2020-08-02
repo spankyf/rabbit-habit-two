@@ -9,9 +9,9 @@ html(lang="en")
     include ../partials/_header
     .habit-container
       h1= something
-      p The length of the data is 
-      p= data
-      p Wlecom to the overview page
+      ul
+        each val in data
+          val
 
 
       a(href='/sleep') Click here to go to sleep page

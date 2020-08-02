@@ -5,28 +5,25 @@ const goals = require("../utils/data/goals.json");
 
 exports.getOverview = catchAsync(async (req, res) => {
   // https://stackoverflow.com/questions/48707021/node-how-to-run-python-script-when-clicking-button-using-pug-and-express-node-we
-  goalsArr = [];
-
-  goals.forEach((element) => {
-    db[element.modelName].findAll({
+  let = goalsDbQueryArray = [];
+  goals.forEach(function (item, i) {
+    goalsDbQueryArray[i] = db[item.modelName].findAll({
       attributes: [
         [
-          db.sequelize.fn(
-            element.goalMetric,
-            db.sequelize.col(element.targetColumn)
-          ),
+          db.sequelize.fn(item.goalMetric, db.sequelize.col(item.targetColumn)),
           "goalResult",
         ],
       ],
+      raw: true,
     });
   });
 
-  console.log(arry);
-  res.status(200).render("pages/overview", {
-    title: "All Habits",
-    something: "Welecom",
-    data: arry,
-    // avgSleep: sum / sleeps.length / 3600000,
-    // loggedToday: todaySleep,
+  Promise.all(goalsDbQueryArray).then((values) => {
+    console.log(values);
+    res.status(200).render("pages/overview", {
+      title: "All Habits",
+      something: "Welecom",
+      data: values,
+    });
   });
 });
