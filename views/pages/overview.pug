@@ -9,9 +9,9 @@ html(lang="en")
     include ../partials/_header
     .habit-container
       h1= something
-      ul
-        each val in data
-          val
+      each val in data
+        ul
+          li= val.goalResult
 
 
       a(href='/sleep') Click here to go to sleep page
