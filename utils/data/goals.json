@@ -10,5 +10,11 @@
     "targetColumn": "exercise",
     "number": "15",
     "goalMetric": "avg"
+  },
+  {
+    "modelName": "Exercise",
+    "targetColumn": "stretching",
+    "number": "0.9",
+    "goalMetric": "avg"
   }
 ]

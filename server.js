@@ -40,7 +40,6 @@ app
   .use(bodyParser.json())
   .use(express.static(path.join(__dirname, "public")))
   .use(morgan("dev"))
-  // .use(bodyParser.json())
   .use("/sleep", sleepRouter)
   .use("/exercise", exerciseRouter)
   .use("/", viewRouter)

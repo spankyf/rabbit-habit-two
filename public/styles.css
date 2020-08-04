@@ -33,3 +33,25 @@ header {
 .nav__links li a:hover {
   color: #0088a9;
 }
+
+.habit__card {
+  /* background-color: green; */
+  /* padding: 10px; */
+  border: solid black 2px;
+}
+
+.habit__container {
+  width: 1000px;
+  margin: 30px auto;
+
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+}
+
+ul {
+  list-style-type: none;
+}

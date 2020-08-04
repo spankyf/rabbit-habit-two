@@ -1,17 +1,13 @@
 const catchAsync = require("../utils/catchAsync");
+const calculateSleepDuration = require("../utils/sleepDuration");
 const db = require("../models");
 
 exports.getAllSleeps = catchAsync(async (req, res) => {
   const sleeps = await db.Sleep.findAll({ order: [["date", "ASC"]] });
-  var sum = 0;
-  sleeps.forEach((element) => {
-    sum += element.dataValues.waketime - element.dataValues.sleeptime;
-  });
 
   res.status(200).render("pages/sleep", {
     title: "Sleep Report",
     len: sleeps.length,
-    avgSleep: sum / sleeps.length / 3600000,
   });
 });
 
@@ -25,7 +21,11 @@ exports.getSleep = catchAsync(async (req, res) => {
 });
 
 exports.addSleep = catchAsync(async (req, res) => {
+  const reqBody = req.body;
+  req.body.duration = calculateSleepDuration(reqBody);
+
   const newSleep = await db.Sleep.create(req.body);
+  console.log(req.body);
   res.status(201).render("pages/sleep", {
     status: "success",
     data: newSleep,

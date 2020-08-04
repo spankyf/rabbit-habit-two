@@ -54,16 +54,8 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       duration: {
-        type: DataTypes.INTEGER,
-        set() {
-          this.setDataValue("duration", this.pee);
-        },
-        // const lostTime =
-        //   this.dataValue.pee * 10 + this.dataValue.interruptions * 20;
-        // const duration = this.dataValue.waketime - this.dataValue.sleeptime;
-
-        //   this.setDataValue("duration", this.dataValue.date); //(duration - lostTime) / 60000;
-        // },
+        type: DataTypes.REAL,
+        defaultValue: 0.0,
       },
 
       interruptions: {
@@ -81,10 +73,17 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
       },
     },
+
     {
       sequelize,
       modelName: "Sleep",
+      // hooks: {
+      //   afterFind: (sleep, options) => {
+      //     console.log(sleep);
+      //   },
+      // },
     }
   );
+
   return Sleep;
 };

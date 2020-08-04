@@ -7,13 +7,19 @@ html(lang="en")
     link(rel="stylesheet" type="text/css" href="/styles.css")
   body
     include ../partials/_header
-    .habit-container
-      h1= something
+    h1= something
+    .habit__container
+      
       each val in data
         ul
-          li= val.dbQuery
+          li.habit__card= val.dbQuery.goalResult
+          li.habit__card= val.modelName
+          li.habit__card= val.number
+          li.habit__card= val.goalMetric
+          li.habit__card= val.modelName
 
-      a(href='/sleep') Click here to go to sleep page
+
+    a(href='/sleep') Click here to go to sleep page
     
     p Did you log today?
     p= loggedToday

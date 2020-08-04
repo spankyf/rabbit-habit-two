@@ -30,6 +30,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         validate: { max: 3, min: 0 },
       },
+      stretching: {
+        type: DataTypes.INTEGER,
+      },
       ailment_type: { type: DataTypes.STRING },
 
       createdAt: {
