@@ -10,10 +10,13 @@ exports.getOverview = catchAsync(async (req, res) => {
     if (item.goalMetric == "custom") {
       console.log("god a custom querey");
 
-      item.dbQuery = db.sequelize.query(
-        'SELECT avg((EXTRACT(EPOCH FROM (waketime - sleeptime)) + (pee * 10 +  interruptions * 20) )/3600) as "goalResult" FROM public."Sleep";',
-        { raw: true }
-      );
+      let rawQuery = db.sequelize
+        .query(
+          'SELECT avg((EXTRACT(EPOCH FROM (waketime - sleeptime)) + (pee * 10 +  interruptions * 20) )/3600) as "goalResult" FROM public."Sleep";'
+        )
+        .then((sqlRes) => {
+          item.dbQuery = sqlRes[0][0];
+        });
     } else {
       item.dbQuery = db[item.modelName].findAll({
         attributes: [
