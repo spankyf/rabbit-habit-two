@@ -11,25 +11,9 @@ const sleepRouter = require("./routes/sleepRoutes");
 const viewRouter = require("./routes/viewRoutes");
 const exerciseRouter = require("./routes/exerciseRoutes");
 
-// const catchAsync = require("./utils/catchAsync");
 const seedData = require("./utils/seederFunction");
 
 app.locals.moment = require("moment");
-
-// const seedData = catchAsync(async (req, res) => {
-//   const seedSleep = await db.Sleep.bulkCreate(
-//     JSON.parse(
-//       fs.readFileSync(path.join(__dirname, "utils", "data", "sleep.json"))
-//     )
-//   );
-//   console.log("Sleep data seeded");
-//   const seedExercise = await db.Exercise.bulkCreate(
-//     JSON.parse(
-//       fs.readFileSync(path.join(__dirname, "utils", "data", "exercise.json"))
-//     )
-//   );
-//   console.log("Exercise data seeded");
-// });
 
 db.sequelize.sync({ force: true }).then(() => {
   seedData();

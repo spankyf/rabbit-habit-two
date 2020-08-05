@@ -8,16 +8,20 @@ html(lang="en")
   body
     include ../partials/_header
     h1= something
+    p This is the habit rabbit website. You can track your habits, update them daily and view your progress towards your goals!
     .habit__container
       
       each val in data
-        ul
-          li.habit__card= val.dbQuery.goalResult
-          li.habit__card= val.modelName
-          li.habit__card= val.number
-          li.habit__card= val.goalMetric
-          li.habit__card= val.modelName
-          li.habit__card= val.targetColumn
+        ul.habit__card
+          li= val.dbQuery.goalResult
+          li= val.modelName
+          li= val.number
+          li= val.goalMetric
+          li
+            a(href= val.href) Click here to go to the #{val.modelName} page
+          li= val.targetColumn
+
+         
 
 
     a(href='/sleep') Click here to go to sleep page
