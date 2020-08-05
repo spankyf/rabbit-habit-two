@@ -12,11 +12,13 @@ exports.getAllSleeps = catchAsync(async (req, res) => {
 });
 
 exports.getSleep = catchAsync(async (req, res) => {
+  console.log(req.params);
   const newDay = await db.Sleep.findByPk(req.params.date);
-  res.status(200).json({
-    status: "success",
+  console.log(newDay);
+  res.status(200).render("pages/sleep", {
+    title: "Sleep Report",
+
     data: newDay,
-    db: db,
   });
 });
 

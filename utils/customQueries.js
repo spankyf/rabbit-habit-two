@@ -1,7 +1,13 @@
 module.exports = () => {
   const goals = require("../utils/data/goals.json");
   const db = require("../models/index");
+  const moment = require("moment");
+
   goals.forEach(function (item) {
+    // item.today = db[item.modelName].findByPk(moment().format("YYYY-MM-DD"));
+    item.today = db[item.modelName].findByPk("2020-05-05", { raw: true });
+    item.href = `/${item.modelName.toLowerCase()}`;
+
     if (item.goalMetric == "custom") {
       let rawQuery = db.sequelize
         .query(
@@ -25,6 +31,6 @@ module.exports = () => {
       });
     }
   });
-
+  console.log(goals);
   return goals;
 };

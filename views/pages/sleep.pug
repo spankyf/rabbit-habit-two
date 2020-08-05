@@ -43,3 +43,13 @@ html(lang="en")
         div 
             button(type='submit' value='New Rating!') Click me to submit your Rating!
 
+    div
+        p This is the data from the day you requested
+        .habit__container
+      
+        each val in data
+            ul.habit__card
+                li= val.sleeptime
+                li= val.waketime
+
+    

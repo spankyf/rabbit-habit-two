@@ -4,7 +4,6 @@ const port = process.env.PORT || 3000;
 const path = require("path");
 const morgan = require("morgan");
 const db = require("./models");
-const fs = require("fs");
 const bodyParser = require("body-parser");
 
 const sleepRouter = require("./routes/sleepRoutes");
