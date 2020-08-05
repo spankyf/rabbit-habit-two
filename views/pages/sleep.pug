@@ -2,19 +2,20 @@ doctype html
 html(lang="en")
   head
     title= title
-    script(type='text/javascript').
-      if (foo) bar(1 + 5)
+    //- script(src='./domSwitch.js')
+    //- //- script(src='../../public/domSwitch.js')
   body
+    script 
+        includes domSwitch.js
     h1= something
-    p The length of the data is 
-    p= len
+
     p Wlecom to the overview page
     p= data
-    p Your average sleep microseconds are
-    p= avgSleep
+
     a(href='/') Go back home
+    button(onclick='myFunction()') Click this to hide the form
     h1 Form
-    form(action="/sleep", method="post")
+    form.sleepForm(action="/sleep", method="post")
         div
             label(for='date') Date:
             input(type='date' name="date" value= moment().format("YYYY-MM-DD"))
@@ -43,13 +44,6 @@ html(lang="en")
         div 
             button(type='submit' value='New Rating!') Click me to submit your Rating!
 
-    div
-        p This is the data from the day you requested
-        .habit__container
-      
-        each val in data
-            ul.habit__card
-                li= val.sleeptime
-                li= val.waketime
+
 
     

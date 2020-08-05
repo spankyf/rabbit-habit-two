@@ -3,7 +3,7 @@
     "modelName": "Sleep",
     "targetColumn": "duration",
     "number": "7.5",
-    "goalMetric": "custom",
+    "goalMetric": "sleepDuration",
     "frequency": "day"
   },
   {

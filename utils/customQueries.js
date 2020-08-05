@@ -7,7 +7,8 @@ module.exports = () => {
     item.today = db[item.modelName].findByPk(moment().format("YYYY-MM-DD")); //moment().format("YYYY-MM-DD"));
     item.href = `/${item.modelName.toLowerCase()}`;
 
-    if (item.goalMetric == "custom") {
+    if (item.goalMetric == "sleepDuration") {
+      //let sqlLiteral
       let rawQuery = db.sequelize
         .query(
           'SELECT avg((EXTRACT(EPOCH FROM (waketime - sleeptime)) + (pee * 10 +  interruptions * 20) )/3600) as "goalResult" FROM public."Sleep";'
@@ -30,6 +31,6 @@ module.exports = () => {
       });
     }
   });
-  //   console.log(goals);
+
   return goals;
 };

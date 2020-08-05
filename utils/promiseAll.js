@@ -25,9 +25,9 @@ module.exports = (arrayOfObjects) => {
       let info = datum[index];
       // use that info to know which object and which property this value belongs to
       if (val == null) {
-        info.obj[info.prop] = "Nothing logged today!";
+        info.obj[info.prop] = false;
       } else if (val.hasOwnProperty("dataValues")) {
-        info.obj[info.prop] = "Logged today!";
+        info.obj[info.prop] = true;
       } else {
         info.obj[info.prop] = val[0];
       }
