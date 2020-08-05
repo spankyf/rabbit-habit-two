@@ -21,6 +21,7 @@ module.exports = (arrayOfObjects) => {
     // now put all the results back in original arrayOfObjects in place of the promises
     // so now instead of promises, the actaul values are there
     results.forEach(function (val, index) {
+      console.log(val);
       // get the info for this index
       let info = datum[index];
       // use that info to know which object and which property this value belongs to
