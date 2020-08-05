@@ -1,20 +1,18 @@
 const db = require("../models/index");
 const catchAsync = require("../utils/catchAsync");
-const sleepDuration = require("../utils/sleepDuration");
+//const customQueries = require("../utils/customQueries");
 const moment = require("moment");
 const goals = require("../utils/data/goals.json");
 const promiseAllProps = require("../utils/promiseAll");
 
 exports.getOverview = catchAsync(async (req, res) => {
-  // let sleepTtl = [];
-
-  // const sleeps = await db.Sleep.findAll({
-  //   attributes: ["pee", "waketime", "sleeptime", "interruptions"],
-  //   raw: true,
-  // }).then((vals) => vals.forEach((el) => sleepTtl.push(sleepDuration(el))));
-
   //  if item.goalMetric = custom, use custom function to get info
   goals.forEach(function (item, i) {
+    // if (item.goalMetric == "custom") {
+    //   console.log("god a custom querey");
+    //   // item.dbQuery = customQueries(item);
+    //   item.dbQuery = { goalResult: null };
+    // } else {
     item.dbQuery = db[item.modelName].findAll({
       attributes: [
         [
