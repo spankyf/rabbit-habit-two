@@ -3,18 +3,49 @@
     "modelName": "Sleep",
     "targetColumn": "duration",
     "number": "7.5",
-    "goalMetric": "custom"
+    "goalMetric": "custom",
+    "frequency": "day"
   },
   {
     "modelName": "Exercise",
     "targetColumn": "exercise",
     "number": "15",
-    "goalMetric": "avg"
+    "goalMetric": "avg",
+    "frequency": "day"
   },
   {
     "modelName": "Exercise",
     "targetColumn": "stretching",
     "number": "0.9",
-    "goalMetric": "avg"
+    "goalMetric": "avg",
+    "frequency": "day"
+  },
+  {
+    "modelName": "Drink",
+    "targetColumn": "n_drinks",
+    "number": "0.3",
+    "goalMetric": "avg",
+    "frequency": "day"
+  },
+  {
+    "modelName": "Sensimilla",
+    "targetColumn": "mg",
+    "number": "15.0",
+    "goalMetric": "avg",
+    "frequency": "day"
+  },
+  {
+    "modelName": "Sensimilla",
+    "targetColumn": "j",
+    "number": "0.05",
+    "goalMetric": "avg",
+    "frequency": "day"
+  },
+  {
+    "modelName": "Vitamin",
+    "targetColumn": "hair_oil",
+    "number": "0.5",
+    "goalMetric": "avg",
+    "frequency": "day"
   }
 ]

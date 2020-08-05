@@ -1,7 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class Sleep extends Model {
+  class Vitamin extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of DataTypes lifecycle.
@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Sleep.init(
+  Vitamin.init(
     {
       date: {
         type: DataTypes.DATEONLY,
@@ -19,51 +19,23 @@ module.exports = (sequelize, DataTypes) => {
         unique: true,
         primaryKey: true,
       },
-      bedtime: {
-        type: DataTypes.DATE,
-        allowNull: false,
-      },
-      sleeptime: {
-        type: DataTypes.DATE,
-        allowNull: false,
-      },
-      waketime: {
-        type: DataTypes.DATE,
-        allowNull: false,
-      },
-      dreams_from_three: {
+      hair_oil: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-          min: 0,
-          max: 3,
-        },
+        // allowNull: false,
       },
-      interruptions: {
+      cod_liver_oil: {
         type: DataTypes.INTEGER,
+        // allowNull: false,
       },
-      pee: {
+      ginseng: {
         type: DataTypes.INTEGER,
+        // allowNull: false,
       },
-      rating_from_five: {
+      Vitamin_d: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-          min: 1,
-          max: 5,
-        },
+        // allowNull: false,
       },
-      // duration: {
-      //   type: DataTypes.REAL,
-      //   defaultValue: 0.0,
-      // },
 
-      interruptions: {
-        type: DataTypes.INTEGER,
-      },
-      pee: {
-        type: DataTypes.INTEGER,
-      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
@@ -76,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
 
     {
       sequelize,
-      modelName: "Sleep",
+      modelName: "Vitamin",
       // hooks: {
       //   afterFind: (sleep, options) => {
       //     console.log(sleep);
@@ -85,5 +57,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  return Sleep;
+  return Vitamin;
 };
