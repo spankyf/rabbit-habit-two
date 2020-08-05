@@ -21,11 +21,16 @@ module.exports = (arrayOfObjects) => {
     // now put all the results back in original arrayOfObjects in place of the promises
     // so now instead of promises, the actaul values are there
     results.forEach(function (val, index) {
-      console.log(val);
       // get the info for this index
       let info = datum[index];
       // use that info to know which object and which property this value belongs to
-      info.obj[info.prop] = val[0];
+      if (val == null) {
+        info.obj[info.prop] = "Nothing logged today!";
+      } else if (val.hasOwnProperty("dataValues")) {
+        info.obj[info.prop] = "Logged today!";
+      } else {
+        info.obj[info.prop] = val[0];
+      }
     });
     // make resolved value be our original (now modified) array of objects
     return arrayOfObjects;

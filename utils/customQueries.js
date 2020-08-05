@@ -4,8 +4,7 @@ module.exports = () => {
   const moment = require("moment");
 
   goals.forEach(function (item) {
-    // item.today = db[item.modelName].findByPk(moment().format("YYYY-MM-DD"));
-    // item.today = db[item.modelName].findByPk("2020-08-09"); //moment().format("YYYY-MM-DD"));
+    item.today = db[item.modelName].findByPk(moment().format("YYYY-MM-DD")); //moment().format("YYYY-MM-DD"));
     item.href = `/${item.modelName.toLowerCase()}`;
 
     if (item.goalMetric == "custom") {
