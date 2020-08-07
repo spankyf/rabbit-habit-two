@@ -13,14 +13,20 @@ html(lang="en")
       
       each val in data
         ul.habit__card
+          li.card__title #{val.modelName}
           li= val.dbQuery.goalResult
-          li= val.modelName
           li= val.number
           li= val.goalMetric
-          li
-            a(href= val.href) Click here to go to the #{val.modelName} page
           li= val.targetColumn
-          li Logged today: #{val.today}
+
+          unless val.today
+            li
+              if val.frequency == 'day'
+                a.flashit(href= val.href) Click here to log daily #{val.modelName.toLowerCase()} 
+              else  
+                a(href= val.href) Click here to log any #{val.modelName.toLowerCase()} updates
+          
+
 
          
 
