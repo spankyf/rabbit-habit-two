@@ -23,7 +23,7 @@ const arr = [
     today: false,
     href: "/exercise",
     dbQuery: { goalResult: "11:10" },
-    passing: false,
+    passing: true,
   },
   {
     modelName: "Exercise",
@@ -36,7 +36,7 @@ const arr = [
     today: false,
     href: "/exercise",
     dbQuery: { goalResult: "95.27%" },
-    passing: false,
+    passing: true,
   },
   {
     modelName: "Drink",
@@ -49,7 +49,7 @@ const arr = [
     today: false,
     href: "/drink",
     dbQuery: { goalResult: "0.47" },
-    passing: false,
+    passing: true,
   },
   {
     modelName: "Sensimilla",
@@ -62,7 +62,7 @@ const arr = [
     today: false,
     href: "/sensimilla",
     dbQuery: { goalResult: "22.25" },
-    passing: false,
+    passing: true,
   },
   {
     modelName: "Sensimilla",
@@ -75,7 +75,7 @@ const arr = [
     today: false,
     href: "/sensimilla",
     dbQuery: { goalResult: "0.15" },
-    passing: false,
+    passing: true,
   },
   {
     modelName: "Vitamin",
@@ -88,6 +88,13 @@ const arr = [
     today: false,
     href: "/vitamin",
     dbQuery: { goalResult: "57.75%" },
-    passing: false,
+    passing: true,
   },
 ];
+
+arr.forEach((el) => {
+  console.log("the number to reach is", el.number);
+  console.log("the current result is", el.dbQuery.goalResult);
+  console.log(+el.dbQuery.goalResult - +el.number);
+  console.log("            ***");
+});
