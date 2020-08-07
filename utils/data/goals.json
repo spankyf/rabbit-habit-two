@@ -4,6 +4,7 @@
     "targetColumn": "duration",
     "number": "7:30",
     "goalMetric": "sleepDuration",
+    "operator": ">=",
     "format": "hours",
     "frequency": "day"
   },
@@ -12,6 +13,7 @@
     "targetColumn": "exercise",
     "number": "15:00",
     "goalMetric": "avg",
+    "operator": ">=",
     "format": "minutes",
     "frequency": "day"
   },
@@ -20,6 +22,7 @@
     "targetColumn": "stretching",
     "number": "90%",
     "goalMetric": "avg",
+    "operator": ">=",
     "format": "percentage",
     "frequency": "day"
   },
@@ -28,6 +31,7 @@
     "targetColumn": "n_drinks",
     "number": "0.3",
     "goalMetric": "avg",
+    "operator": "<=",
     "format": "units",
     "frequency": "day"
   },
@@ -36,6 +40,7 @@
     "targetColumn": "mg",
     "number": "15.0",
     "goalMetric": "avg",
+    "operator": "<=",
     "format": "units",
     "frequency": "day"
   },
@@ -44,6 +49,7 @@
     "targetColumn": "j",
     "number": "0.05",
     "goalMetric": "avg",
+    "operator": "<=",
     "format": "units",
     "frequency": "day"
   },
@@ -52,6 +58,7 @@
     "targetColumn": "hair_oil",
     "number": "50%",
     "goalMetric": "avg",
+    "operator": ">=",
     "format": "percentage",
     "frequency": "day"
   }
