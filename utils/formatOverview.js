@@ -2,12 +2,6 @@ const compareGoals = require("./compareGoals");
 
 module.exports = (arr) => {
   arr.forEach((el) => {
-    if (el.format == "hours" || el.format == "minutes") {
-      console.log(typeof el.dbQuery.goalResult);
-      console.log(typeof el.number);
-      console.log(el.number, el.dbQuery.goalResult);
-    }
-
     if (el.operator == ">=") {
       el.passing = el.number >= el.dbQuery.goalResult;
     } else if (el.operator == "<=") {

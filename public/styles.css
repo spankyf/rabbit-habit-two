@@ -47,7 +47,7 @@ header {
 }
 
 .habit__container {
-  width: 1000px;
+  width: 1500px;
   margin: 30px auto;
 
   display: grid;
@@ -60,11 +60,16 @@ header {
 
 .card__title {
   font-size: medium;
-  padding: 5px;
+  padding: 15px;
 }
 
 ul {
   list-style-type: none;
+}
+
+.card__li {
+  font-size: medium;
+  padding: 15px;
 }
 
 .flashit {

@@ -2,8 +2,8 @@ doctype html
 html(lang="en")
   head
     title= title
-    script(type='text/javascript').
-      if (foo) bar(1 + 5)
+    //- script(type='text/javascript').
+    //-   if (foo) bar(1 + 5)
     link(rel="stylesheet" type="text/css" href="/styles.css")
   body
     include ../partials/_header
@@ -13,16 +13,20 @@ html(lang="en")
       
       each val in data
         ul.habit__card
-          li.card__title #{val.modelName} and the metric is #{val.targetColumn}
+          li.card__li #{val.modelName} and the metric is #{val.targetColumn}
+          li.card__li #{val.number} is the goal per #{val.frequency} and you're currently at #{val.dbQuery.goalResult}
           if val.passing
-            li.card__passing Well Done! You're achieving your goal!
+            li.card__li.card__passing Well Done! You're achieving your goal!
           else  
-            li.card__failing You can do better... one day at a time!
+            li.card__li.card__failing You can do better... one day at a time!
 
 
-          unless val.today
-            li
+          if !val.today
+            li.card__li
               if val.frequency == 'day'
                 a.flashit(href= val.href) Click here to log daily #{val.modelName.toLowerCase()} 
               else  
-                a(href= val.href) Click here to log any #{val.modelName.toLowerCase()} updates
+                a(href= val.href) Click here to log or review any #{val.modelName.toLowerCase()} data!
+          else
+            li.card__li
+              a(href= val.href) Click here to review your #{val.modelName.toLowerCase()} data!

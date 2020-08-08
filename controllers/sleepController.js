@@ -1,20 +1,25 @@
+const moment = require("moment");
 const catchAsync = require("../utils/catchAsync");
 const calculateSleepDuration = require("../utils/sleepDuration");
 const db = require("../models");
 
 exports.getAllSleeps = catchAsync(async (req, res) => {
   const sleeps = await db.Sleep.findAll({ order: [["date", "ASC"]] });
-
+  let todayLogged = false;
+  console.log(sleeps.slice(-1)[0].dataValues.date);
+  if (sleeps.slice(-1)[0].dataValues.date == moment().format("YYYY-MM-DD")) {
+    todayLogged = true;
+  }
   res.status(200).render("pages/sleep", {
     title: "Sleep Report",
-    len: sleeps.length,
+    // len: sleeps.length,
+    todayLogged: todayLogged,
+    title: "Sleep",
   });
 });
 
 exports.getSleep = catchAsync(async (req, res) => {
-  //console.log(req.params);
   const newDay = await db.Sleep.findByPk(req.params.date);
-  //console.log(newDay);
   res.status(200).render("pages/sleep", {
     title: "Sleep Report",
 
