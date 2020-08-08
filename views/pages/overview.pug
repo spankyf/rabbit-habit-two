@@ -13,11 +13,12 @@ html(lang="en")
       
       each val in data
         ul.habit__card
-          li.card__title #{val.modelName}
-          li= val.dbQuery.goalResult
-          li= val.number
-          li= val.goalMetric
-          li= val.targetColumn
+          li.card__title #{val.modelName} and the metric is #{val.targetColumn}
+          if val.passing
+            li.card__passing Well Done! You're achieving your goal!
+          else  
+            li.card__failing You can do better... one day at a time!
+
 
           unless val.today
             li
@@ -25,13 +26,3 @@ html(lang="en")
                 a.flashit(href= val.href) Click here to log daily #{val.modelName.toLowerCase()} 
               else  
                 a(href= val.href) Click here to log any #{val.modelName.toLowerCase()} updates
-          
-
-
-         
-
-
-    a(href='/sleep') Click here to go to sleep page
-    
-    p Did you log today?
-    p= loggedToday

@@ -1,3 +1,5 @@
+const compareGoals = require("./compareGoals");
+
 module.exports = (arr) => {
   arr.forEach((el) => {
     if (el.format == "hours" || el.format == "minutes") {
@@ -26,5 +28,7 @@ module.exports = (arr) => {
       el.dbQuery.goalResult = parseFloat(el.dbQuery.goalResult).toFixed(2);
     }
   });
-  return arr;
+  //return arr;
+  const res = compareGoals(arr);
+  return res;
 };
