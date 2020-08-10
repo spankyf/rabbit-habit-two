@@ -17,6 +17,8 @@ def sleep_stats():
     data = cur.fetchall()
     ttl = datetime.timedelta()
     for r in data:
+        print(r[4])
+        print(r[3])
         ttl += r[4] - r[3]
     print(round((ttl/len(data)).seconds / 3600, 2))
     # return round((ttl/len(data)).seconds / 3600, 2)
