@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const sleepRouter = require("./routes/sleepRoutes");
 const viewRouter = require("./routes/viewRoutes");
 const exerciseRouter = require("./routes/exerciseRoutes");
+const pyRouter = require("./routes/pyRoutes");
 
 const seedData = require("./utils/seederFunction");
 
@@ -26,6 +27,7 @@ app
   .use(morgan("dev"))
   .use("/sleep", sleepRouter)
   .use("/exercise", exerciseRouter)
+  .use("/python", pyRouter)
   .use("/", viewRouter)
   .use(express.json({ limit: "10kb" }))
   .set("views", path.join(__dirname, "views"))
