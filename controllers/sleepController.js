@@ -52,6 +52,7 @@ exports.sleepGraph = catchAsync(async (req, res, next) => {
     console.log("The exit code was: " + code);
     console.log("The exit signal was: " + signal);
     console.log("finished");
+    // next();
   });
 });
 

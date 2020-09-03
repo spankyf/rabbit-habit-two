@@ -7,7 +7,12 @@ Created on Sat Jul 25 14:36:51 2020
 
 import matplotlib.pyplot as plt
 import psycopg2
+import os
 import seaborn
+import json
+
+with open('config/config.json') as json_file:
+    config = json.load(json_file)
 
 seaborn.set(style='ticks')
 
@@ -15,7 +20,7 @@ seaborn.set(style='ticks')
 def graph_data():
     try:
         conn = psycopg2.connect(
-            "dbname=d2ipc50hqn81fu user=aanqlgeiyzwajd password=00dfd79fc1796e59fbd0d6e78140a8cca4dbe300a3ffa00448cf831d46de5607 host=ec2-54-91-178-234.compute-1.amazonaws.com port=5432")
+            config['development']['DATABASE_URL'])
 
         cur = conn.cursor()
         cur.execute('SELECT ((EXTRACT(EPOCH FROM (waketime - sleeptime)) + (pee * 10 +  interruptions * 20) )/3600) as "sleepHours", date FROM public."Sleep";')
@@ -37,7 +42,8 @@ def graph_data():
         print('I made a graph')
         return plt
     except Exception as e:
-        # print('something happend')
+
+        print('something happend')
         print(e)
         return e
 
