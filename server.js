@@ -29,7 +29,8 @@ app
   .use("/exercise", exerciseRouter)
   .use("/python", pyRouter)
   .use("/", viewRouter)
-  .use(express.json({ limit: "10kb" }))
+  // .use(express.json({ limit: "10kb" }))
+  .use(express.static(path.join(__dirname, "public")))
   .set("views", path.join(__dirname, "views"))
   .set("view engine", "pug");
 

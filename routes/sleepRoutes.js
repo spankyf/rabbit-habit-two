@@ -5,7 +5,7 @@ const router = express.Router();
 
 router
   .route("/")
-  .get(sleepController.getAllSleeps)
+  .get(sleepController.sleepGraph, sleepController.getAllSleeps)
   .post(sleepController.addSleep);
 
 router

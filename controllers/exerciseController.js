@@ -4,6 +4,7 @@ const db = require("../models");
 exports.getAllExercises = catchAsync(async (req, res) => {
   const exercises = await db.Exercise.findAll({ order: [["date", "ASC"]] });
   var sum = 0;
+
   exercises.forEach((element) => {
     sum += element.dataValues.exercise;
   });

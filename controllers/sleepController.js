@@ -2,28 +2,59 @@ const moment = require("moment");
 const catchAsync = require("../utils/catchAsync");
 const calculateSleepDuration = require("../utils/sleepDuration");
 const db = require("../models");
+const path = require("path");
+var os = require("os");
+
+const { PythonShell } = require("python-shell");
 
 exports.getAllSleeps = catchAsync(async (req, res) => {
   const sleeps = await db.Sleep.findAll({ order: [["date", "ASC"]] });
-  let todayLogged = false;
-  console.log(sleeps.slice(-1)[0].dataValues.date);
-  if (sleeps.slice(-1)[0].dataValues.date == moment().format("YYYY-MM-DD")) {
-    todayLogged = true;
-  }
+
+  const todayLogged =
+    sleeps.slice(-1)[0].dataValues.date == moment().format("YYYY-MM-DD")
+      ? true
+      : false;
   res.status(200).render("pages/sleep", {
     title: "Sleep Report",
-    // len: sleeps.length,
-    todayLogged: todayLogged,
+    todayLogged: todayLogged, // influences the pug layout
     title: "Sleep",
   });
 });
 
 exports.getSleep = catchAsync(async (req, res) => {
   const newDay = await db.Sleep.findByPk(req.params.date);
+
   res.status(200).render("pages/sleep", {
     title: "Sleep Report",
 
     data: newDay,
+  });
+});
+
+exports.sleepGraph = catchAsync(async (req, res, next) => {
+  const options = {
+    mode: "text",
+    scriptPath: path.join(__dirname, "..", "utils"),
+  };
+
+  let pyshell = new PythonShell("make_graph.py", options);
+
+  pyshell.on("message", function (data) {
+    console.log(data);
+    res.locals.pngPath = path.join(
+      __dirname,
+      "..",
+      "public",
+      "latestGraph.png"
+    );
+    next();
+  });
+
+  pyshell.end(function (err, code, signal) {
+    if (err) throw err;
+    console.log("The exit code was: " + code);
+    console.log("The exit signal was: " + signal);
+    console.log("finished");
   });
 });
 

@@ -3,46 +3,17 @@ html(lang="en")
   head
     title= title
     link(rel="stylesheet" type="text/css" href="/styles.css")
+    link(rel="stylesheet" type="text/css" href="/form8.css")
 
   body
     include ../partials/_header
-    h1 Here  you'll find all the data about your Sleep Habits
-
-    //- div here is the len of the data: #{data.length}
-    div #{todayLogged}
     
     if todayLogged
-        div You logged today, thats great
+        include ../partials/_stats
     else
-        h1 Form
-        form.sleepForm(action="/sleep", method="post")
-            div
-                label(for='date') Date:
-                input(type='date' name="date" value= moment().format("YYYY-MM-DD"))
-            div
-                label(for='rating') Sleep rating from 5:
-                input(type='number' name="rating_from_five" value= 3)
-            div
-                label(for='dreams') Dreams from 3 Rating:
-                input(type='number' name="dreams_from_three" value= 1)
-            div
-                label(for='interruptions') Interruptions
-                input(type='number' name="interruptions" value= 0)
-            div
-                label(for='pee') Pee
-                input(type='number' name="pee" value= 0)
-            div
-                label(for='bedtime') Bedtime:
-                input(type='datetime-local' name="bedtime" value= moment().add(-1, 'day').set("hour", 22).set("minute", 45).format(moment.HTML5_FMT.DATETIME_LOCAL))
-            div
-                label(for='sleeptime') Sleeptime:
-                input(type='datetime-local' name="sleeptime" value= moment().add(-1, 'day').set("hour", 23).set("minute", 30).format(moment.HTML5_FMT.DATETIME_LOCAL))
-            div
-                label(for='waketime') Waketime:
-                input(type='datetime-local' name="waketime" value= moment().set("hour", 7).set("minute", 30).format(moment.HTML5_FMT.DATETIME_LOCAL))
+        include ../partials/_unloggedform
 
-            div 
-                button(type='submit' value='New Rating!') Click me to submit your Rating!
+    include ../partials/_footer
 
 
 

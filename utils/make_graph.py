@@ -33,10 +33,12 @@ def graph_data():
         plt.plot_date(dates, sleep_hours, '-')
         #plt.plot_date(dates, biden_values, '-')
         # seaborn.despine(ax=ax, offset=0)
-        plt.savefig('./latestGraph.png', bbox_inches='tight')
+        plt.savefig('public/latestGraph.png', bbox_inches='tight')
         print('I made a graph')
         return plt
     except Exception as e:
+        # print('something happend')
+        print(e)
         return e
 
 
