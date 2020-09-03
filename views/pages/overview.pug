@@ -14,7 +14,7 @@ html(lang="en")
       each val in data
         ul.habit__card
           li.card__li #{val.modelName} and the metric is #{val.targetColumn}
-          li.card__li #{val.number} is the goal per #{val.frequency} and you're currently at #{val.dbQuery.goalResult}
+          //- li.card__li #{val.number} is the goal per #{val.frequency} and you're currently at #{val.dbQuery.goalResult}
           if val.passing
             li.card__li.card__passing Well Done! You're achieving your goal!
           else  

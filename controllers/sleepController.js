@@ -3,21 +3,18 @@ const catchAsync = require("../utils/catchAsync");
 const calculateSleepDuration = require("../utils/sleepDuration");
 const db = require("../models");
 const path = require("path");
-var os = require("os");
 
 const { PythonShell } = require("python-shell");
 
 exports.getAllSleeps = catchAsync(async (req, res) => {
   const sleeps = await db.Sleep.findAll({ order: [["date", "ASC"]] });
 
-  const todayLogged =
+  req.app.locals.todayLogged =
     sleeps.slice(-1)[0].dataValues.date == moment().format("YYYY-MM-DD")
       ? true
       : false;
   res.status(200).render("pages/sleep", {
     title: "Sleep Report",
-    todayLogged: todayLogged, // influences the pug layout
-    title: "Sleep",
   });
 });
 
@@ -64,6 +61,7 @@ exports.addSleep = catchAsync(async (req, res) => {
 
   const newSleep = await db.Sleep.create(req.body);
   console.log(req.body);
+  req.app.locals.todayLogged = true;
   res.status(201).render("pages/sleep", {
     status: "success",
     data: newSleep,
