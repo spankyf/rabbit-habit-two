@@ -1,22 +1,22 @@
-h1= something
-    p This is the habit rabbit website. You can track your habits, update them daily and view your progress towards your goals!
-    .habit__container
-      
-      each val in data
-        ul.habit__card
-          li.card__li #{val.modelName} and the metric is #{val.targetColumn}
-          if val.passing
-            li.card__li.card__passing Well Done! You're achieving your goal!
-          else  
-            li.card__li.card__failing You can do better... one day at a time!
 
+p This is the habit rabbit website. You can track your habits, update them daily and view your progress towards your goals!
+main.main-area
+  .centered
+    section.cards
+      for val in data
+        article.card
+          a(href= `${val.modelName.toLowerCase()}`)
+            picture.thumbnail
+              img.card__img(src= `${val.targetColumn}.png` alt='A banana that looks like a bird')
+            .card-content
+              h2= val.modelName 
+              p Your goal is to do #{val.number} #{val.format} per #{val.frequency}
+              if val.passing
+                p Your currently at #{val.current}, you are achieving your goal!
+              else
+                p Your currently at #{val.current}, take one day at a time!
+              if !val.today
+                p Click to log your #{val.modelName} goal for today!
+  
 
-          if !val.today
-            li.card__li
-              if val.frequency == 'day'
-                a.flashit(href= val.href) Click here to log daily #{val.modelName.toLowerCase()} 
-              else  
-                a(href= val.href) Click here to log or review any #{val.modelName.toLowerCase()} data!
-          else
-            li.card__li
-              a(href= val.href) Click here to review your #{val.modelName.toLowerCase()} data!
+              

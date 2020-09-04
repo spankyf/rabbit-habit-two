@@ -2,25 +2,25 @@
   {
     "modelName": "Sleep",
     "targetColumn": "duration",
-    "number": "7:30",
+    "number": 7.5,
     "goalMetric": "sleepDuration",
     "operator": ">=",
-    "format": "hours",
+    "format": "time",
     "frequency": "day"
   },
   {
     "modelName": "Exercise",
     "targetColumn": "exercise",
-    "number": "15:00",
+    "number": 15.0,
     "goalMetric": "avg",
     "operator": ">=",
-    "format": "minutes",
+    "format": "time",
     "frequency": "day"
   },
   {
     "modelName": "Exercise",
     "targetColumn": "stretching",
-    "number": "90%",
+    "number": 0.9,
     "goalMetric": "avg",
     "operator": ">=",
     "format": "percentage",
@@ -29,7 +29,7 @@
   {
     "modelName": "Drink",
     "targetColumn": "n_drinks",
-    "number": "0.3",
+    "number": 0.3,
     "goalMetric": "avg",
     "operator": "<=",
     "format": "units",
