@@ -2,9 +2,9 @@ const compareGoals = require("./compareGoals");
 
 module.exports = (arr) => {
   // console.log(arr);
-  console.log("                                ****");
+  // console.log("                                ****");
   arr.forEach((el) => {
-    console.log(el);
+    // console.log(el);
     if (el.operator == ">=") {
       el.passing = el.number >= el.dbQuery.goalResult;
     } else if (el.operator == "<=") {
