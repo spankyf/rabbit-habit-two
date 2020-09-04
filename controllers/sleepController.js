@@ -1,6 +1,7 @@
 const moment = require("moment");
 const catchAsync = require("../utils/catchAsync");
 const calculateSleepDuration = require("../utils/sleepDuration");
+const pyData = require("../utils/spawnPython");
 const db = require("../models");
 const path = require("path");
 
@@ -21,10 +22,8 @@ exports.getAllSleeps = catchAsync(async (req, res) => {
 
 exports.getSleep = catchAsync(async (req, res) => {
   const newDay = await db.Sleep.findByPk(req.params.date);
-
   res.status(200).render("pages/sleep", {
     title: "Sleep Report",
-
     data: newDay,
   });
 });
@@ -38,46 +37,20 @@ exports.sleepGraph = catchAsync(async (req, res, next) => {
   let pyshell = new PythonShell("make_graph.py", options);
 
   pyshell.on("message", function (data) {
-    console.log(data);
-    res.locals.pngPath = path.join(
-      __dirname,
-      "..",
-      "public",
-      "latestGraph.png"
-    );
     next();
   });
 
   pyshell.end(function (err, code, signal) {
     if (err) throw err;
-    console.log("The exit code was: " + code);
-    console.log("The exit signal was: " + signal);
-    console.log("finished");
-    // next();
+    console.log("Middleware - python process finished - make_graph.py");
   });
 });
 
 exports.getStats = catchAsync(async (req, res, next) => {
   const scriptName = "sleep_stats.py";
-
-  const pyData = function (fileName) {
-    const options = {
-      mode: "text",
-      scriptPath: path.join(__dirname, "..", "utils"),
-    };
-    let pyshell = new PythonShell(fileName, options);
-    pyshell.on("message", function (data) {
-      console.log(data);
-      req.app.locals.stats = data;
-      console.log("Middleware - got stats from regression");
-      return data;
-    });
-    pyshell.end(function (err, code, signal) {
-      if (err) throw err;
-    });
-  };
-
-  pyData(scriptName);
+  const result = pyData(scriptName);
+  console.log(`here is the result: ${result}`);
+  req.app.locals.stats = result;
   next();
 });
 
