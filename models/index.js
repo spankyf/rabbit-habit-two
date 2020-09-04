@@ -12,6 +12,8 @@ let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
+  console.log(" *******             ***********            **********");
+  console.log(config.DATABASE_URL);
   sequelize = new Sequelize(config.DATABASE_URL, config);
 }
 
