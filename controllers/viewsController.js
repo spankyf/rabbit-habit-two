@@ -3,15 +3,19 @@ const customQueries = require("../utils/customQueries");
 const promiseAllProps = require("../utils/promiseAll");
 const formatOverview = require("../utils/formatOverview");
 
-exports.getOverview = catchAsync(async (req, res) => {
+exports.getGoals = catchAsync(async (req, res, next) => {
   const goalsArr = customQueries();
 
   promiseAllProps(goalsArr).then((values) => {
-    const overviews = formatOverview(values);
-    res.status(200).render("pages/overview", {
-      title: "All Habits",
-      something: "Welecom",
-      data: overviews,
-    });
+    console.log("Hit the views middleware");
+    req.app.locals.data = formatOverview(values);
+
+    next();
+  });
+});
+
+exports.getOverview = catchAsync(async (req, res) => {
+  res.status(200).render("pages/overview", {
+    title: "All Habits",
   });
 });

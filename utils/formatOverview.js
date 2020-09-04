@@ -32,7 +32,7 @@ module.exports = (arr) => {
   }
   arr.forEach((el) => {
     el.passing = operators[el.operator](el.dbQuery.goalResult, el.number);
-
+    // console.log(el);
     if (el.format == "time") {
       el.number = convertNumToTime(el.number);
       el.current = convertNumToTime(el.dbQuery.goalResult);
