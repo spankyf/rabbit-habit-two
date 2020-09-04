@@ -59,7 +59,7 @@ exports.addSleep = catchAsync(async (req, res) => {
   req.body.duration = calculateSleepDuration(reqBody);
 
   const newSleep = await db.Sleep.create(req.body);
-  console.log(req.body);
+
   req.app.locals.todayLogged = true;
   res.status(201).render("pages/sleep", {
     status: "success",
