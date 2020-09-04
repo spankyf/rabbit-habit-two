@@ -2,31 +2,9 @@ doctype html
 html(lang="en")
   head
     title= title
-    //- script(type='text/javascript').
-    //-   if (foo) bar(1 + 5)
+
     link(rel="stylesheet" type="text/css" href="/styles.css")
   body
     include ../partials/_header
-    h1= something
-    p This is the habit rabbit website. You can track your habits, update them daily and view your progress towards your goals!
-    .habit__container
-      
-      each val in data
-        ul.habit__card
-          li.card__li #{val.modelName} and the metric is #{val.targetColumn}
-          //- li.card__li #{val.number} is the goal per #{val.frequency} and you're currently at #{val.dbQuery.goalResult}
-          if val.passing
-            li.card__li.card__passing Well Done! You're achieving your goal!
-          else  
-            li.card__li.card__failing You can do better... one day at a time!
-
-
-          if !val.today
-            li.card__li
-              if val.frequency == 'day'
-                a.flashit(href= val.href) Click here to log daily #{val.modelName.toLowerCase()} 
-              else  
-                a(href= val.href) Click here to log or review any #{val.modelName.toLowerCase()} data!
-          else
-            li.card__li
-              a(href= val.href) Click here to review your #{val.modelName.toLowerCase()} data!
+    include ../partials/_welcome
+    include ../partials/_footer

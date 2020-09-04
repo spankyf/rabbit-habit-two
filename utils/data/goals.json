@@ -34,32 +34,5 @@
     "operator": "<=",
     "format": "units",
     "frequency": "day"
-  },
-  {
-    "modelName": "Sensimilla",
-    "targetColumn": "mg",
-    "number": "15.0",
-    "goalMetric": "avg",
-    "operator": "<=",
-    "format": "units",
-    "frequency": "day"
-  },
-  {
-    "modelName": "Sensimilla",
-    "targetColumn": "j",
-    "number": "0.05",
-    "goalMetric": "avg",
-    "operator": "<=",
-    "format": "units",
-    "frequency": "day"
-  },
-  {
-    "modelName": "Vitamin",
-    "targetColumn": "hair_oil",
-    "number": "50%",
-    "goalMetric": "avg",
-    "operator": ">=",
-    "format": "percentage",
-    "frequency": "day"
   }
 ]

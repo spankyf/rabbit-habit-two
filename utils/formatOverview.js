@@ -1,6 +1,8 @@
 const compareGoals = require("./compareGoals");
 
 module.exports = (arr) => {
+  // console.log(arr);
+  console.log("                                ****");
   arr.forEach((el) => {
     console.log(el);
     if (el.operator == ">=") {

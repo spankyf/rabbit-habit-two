@@ -1,4 +1,4 @@
-const pyData = require("../utils/spawnPython");
+const pyData = require("./spawnPython");
 var promise = Promise.resolve(pyData());
 
 promise.then(
