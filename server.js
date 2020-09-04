@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 const path = require("path");
 const morgan = require("morgan");
 const db = require("./models");
@@ -29,7 +29,6 @@ app
   .use("/exercise", exerciseRouter)
   .use("/python", pyRouter)
   .use("/", viewRouter)
-  // .use(express.json({ limit: "10kb" }))
   .use(express.static(path.join(__dirname, "public")))
   .set("views", path.join(__dirname, "views"))
   .set("view engine", "pug");

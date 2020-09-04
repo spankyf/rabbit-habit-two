@@ -13,6 +13,7 @@ exports.getAllSleeps = catchAsync(async (req, res) => {
     sleeps.slice(-1)[0].dataValues.date == moment().format("YYYY-MM-DD")
       ? true
       : false;
+  console.log(req.app.locals.stats);
   res.status(200).render("pages/sleep", {
     title: "Sleep Report",
   });
@@ -54,6 +55,30 @@ exports.sleepGraph = catchAsync(async (req, res, next) => {
     console.log("finished");
     // next();
   });
+});
+
+exports.getStats = catchAsync(async (req, res, next) => {
+  const scriptName = "sleep_stats.py";
+
+  const pyData = function (fileName) {
+    const options = {
+      mode: "text",
+      scriptPath: path.join(__dirname, "..", "utils"),
+    };
+    let pyshell = new PythonShell(fileName, options);
+    pyshell.on("message", function (data) {
+      console.log(data);
+      req.app.locals.stats = data;
+      console.log("Middleware - got stats from regression");
+      return data;
+    });
+    pyshell.end(function (err, code, signal) {
+      if (err) throw err;
+    });
+  };
+
+  pyData(scriptName);
+  next();
 });
 
 exports.addSleep = catchAsync(async (req, res) => {
