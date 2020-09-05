@@ -3,7 +3,11 @@ module.exports = () => {
   const db = require("../models/index");
   const moment = require("moment");
 
+  // console.log("goals");
+  // console.log(goals);
   goals.forEach(function (item) {
+    // console.log("item");
+    // console.log(item);
     item.today = db[item.modelName].findByPk(moment().format("YYYY-MM-DD")); //moment().format("YYYY-MM-DD"));
     item.href = `/${item.modelName.toLowerCase()}`;
 

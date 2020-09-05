@@ -7,8 +7,9 @@ exports.getGoals = catchAsync(async (req, res, next) => {
   const goalsArr = customQueries();
 
   promiseAllProps(goalsArr).then((values) => {
-    console.log("Hit the views middleware");
-    req.app.locals.data = formatOverview(values);
+    if (!req.app.locals.data) {
+      req.app.locals.data = formatOverview(values);
+    }
 
     next();
   });
