@@ -32,6 +32,7 @@ This site is meant to showcase my ability as a backend software/web developer. T
 * Basic CSS, HTML markup using Pug templating engine
 * Heroku deployment
 * Git version control
+* Spawning processes in Node (spawn a python process)
 
 Features coming soon include:
 
