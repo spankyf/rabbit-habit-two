@@ -7,20 +7,26 @@ Created on Sat Jul 25 14:36:51 2020
 
 import matplotlib.pyplot as plt
 import psycopg2
-import os
 import seaborn
 import json
 
-with open('config/config.json') as json_file:
-    config = json.load(json_file)
+# with open('config/config.json') as json_file:
+#     config = json.load(json_file)
+import os
+
+# from dotenv import load_dotenv, find_dotenv
+
+# load_dotenv(find_dotenv())
+# print(os.environ)
+# os.environ.get("DATABASE_URL")
+DATABASE_URL = 'postgres://pwxciyzpdxxckh:0eb4a471a597ceab3788702099a6d41d648ff39d03c5d04b7aa8f52ff7cb3569@ec2-54-236-146-234.compute-1.amazonaws.com:5432/d53qbua6716d6u'
 
 seaborn.set(style='ticks')
 
 
 def graph_data():
     try:
-        conn = psycopg2.connect(
-            config['development']['DATABASE_URL'])
+        conn = psycopg2.connect(DATABASE_URL)
 
         cur = conn.cursor()
         cur.execute('SELECT ((EXTRACT(EPOCH FROM (waketime - sleeptime)) + (pee * 10 +  interruptions * 20) )/3600) as "sleepHours", date FROM public."Sleep";')

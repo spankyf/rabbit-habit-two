@@ -14,6 +14,7 @@ psycopg2==2.8.5
 pylint==2.4.4
 pyparsing==2.4.7
 python-dateutil==2.8.1
+python-dotenv==0.14.0
 pytz==2020.1
 scipy==1.5.2
 seaborn==0.10.1

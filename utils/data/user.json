@@ -1,0 +1,14 @@
+[
+  {
+    "name": "deano",
+    "email": "deanflanagan@gmail.com",
+    "photo": "my_photo",
+    "password": "$2b$12$CmfXfUU9XOjseNHE.UCwb.J44DzRVrhXb31o3FkCWjDpZRs/PFRJi"
+  },
+  {
+    "name": "admin",
+    "email": "admin@rabbithabit.com",
+    "photo": "my_photo",
+    "password": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTk5Nzc5NjI5LCJleHAiOjE2MDc1NTU2Mjl9.3Hk37flqB9YiFwHrf2VB0uag48y-1zBg11APuxObQlw"
+  }
+]
