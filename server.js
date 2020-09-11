@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const db = require("./models");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
 const sleepRouter = require("./routes/sleepRoutes");
@@ -24,6 +25,7 @@ db.sequelize.sync({ force: true }).then(() => {
 app
   .use(bodyParser.urlencoded({ extended: false }))
   .use(bodyParser.json())
+  .use(cookieParser())
   .use(express.static(path.join(__dirname, "public")))
   .use(morgan("dev"))
   .use("/sleep", sleepRouter)

@@ -29,8 +29,10 @@ exports.getSleep = catchAsync(async (req, res) => {
 });
 
 exports.sleepGraph = catchAsync(async (req, res, next) => {
+  console.log(process.env.PATH);
   const options = {
     mode: "text",
+    pythonPath: "python",
     scriptPath: path.join(__dirname, "..", "utils"),
   };
 

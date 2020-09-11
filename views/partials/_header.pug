@@ -4,13 +4,25 @@ header
     h1 Rabbit Habit 
 
     nav 
+    if user
 
         ul.nav__links
             li 
-                a(href="#") My Profile
+                a(href="/me") My Profile
+            li 
+                a(href="/logout") Logout
+            li 
+                a(href="/overview") Home
+            li 
+                a(href="/goals") My Goals
+    else
+        ul.nav__links
+            li 
+                a(href="/about") About 
             li 
                 a(href="/login") Login
             li 
-                a(href="/welcome") Home
+                a(href="/") Start Here
+
     a.cta(href="mailto:deanflanagan@gmail.com") 
         button Contact
