@@ -20,3 +20,9 @@ exports.getOverview = catchAsync(async (req, res) => {
     title: "All Habits",
   });
 });
+
+exports.getLoginForm = catchAsync(async (req, res) => {
+  res.status(200).render("pages/login", {
+    title: "Log in to your account",
+  });
+});

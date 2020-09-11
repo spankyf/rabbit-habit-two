@@ -1,0 +1,15 @@
+extends base
+
+block content
+  main.form__container
+    .login-form
+      h2.heading-secondary.ma-bt-lg Log into your account
+      form.form-style-8(action="/overview", method="post")
+        div
+          label(for='email') Email address
+          input#email(type='email', placeholder='you@example.com', required)
+        div
+          label(for='password') Password
+          input#password(type='password', placeholder='••••••••', required, minlength='8')
+        div
+          button(type='submit' value='') Login
